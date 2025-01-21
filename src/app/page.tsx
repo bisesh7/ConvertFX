@@ -2,7 +2,7 @@
 
 import { ChangeEvent, useEffect, useState } from "react";
 import NavbarComponent from "./Components/navbarComponent";
-import { Container, Form, Button, Row, Col, InputGroup } from "react-bootstrap";
+import { Container, Form, Row, Col, InputGroup } from "react-bootstrap";
 import axios from "axios";
 import { Currencies } from "./Common/interfaces/currencies";
 
