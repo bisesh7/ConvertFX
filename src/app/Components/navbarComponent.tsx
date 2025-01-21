@@ -15,8 +15,10 @@ const NavbarComponent: NextPage<Props> = ({}) => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="https://github.com/bisesh7">Github</Nav.Link>
-              <Nav.Link href="https://www.shakyabisesh.com">
+              <Nav.Link href="https://github.com/bisesh7" target="_blank">
+                Github
+              </Nav.Link>
+              <Nav.Link href="https://www.shakyabisesh.com" target="_blank">
                 Personal-Website
               </Nav.Link>
             </Nav>
