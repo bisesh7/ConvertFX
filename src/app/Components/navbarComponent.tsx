@@ -9,11 +9,11 @@ const NavbarComponent: NextPage<Props> = ({}) => {
   return (
     <div>
       <Navbar expand="lg" className="bg-body-tertiary">
-        <Container>
+        <Container className="ms-auto">
           <Navbar.Brand href="#home">ConvertFX</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
+            <Nav className="ms-auto">
               <Nav.Link href="#home">Home</Nav.Link>
               <Nav.Link href="https://github.com/bisesh7" target="_blank">
                 Github
