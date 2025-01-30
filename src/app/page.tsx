@@ -31,6 +31,33 @@ interface CurrencyOption {
   isFavorite: boolean;
 }
 
+interface TimeSeriesResponse {
+  result: any;
+  rates: {
+    [date: string]: {
+      [currencyCode: string]: number;
+    };
+  };
+}
+
+interface Rate {
+  [currency: string]: number;
+}
+
+interface RatesResponse {
+  rates: {
+    [date: string]: Rate;
+  };
+}
+
+interface RateDetails {
+  [currencyCode: string]: number;
+}
+
+interface TimeSeriesRates {
+  [date: string]: RateDetails;
+}
+
 export default function Home() {
   const [amount, setAmount] = useState<string>(""); // Change to string type
   const [fromCurrency, setFromCurrency] = useState("USD");
@@ -46,14 +73,12 @@ export default function Home() {
     { date: string; rate: number }[]
   >([]);
   const [showChart, setShowChart] = useState(false);
-  const [startDate, setStartDate] = useState<string>(() => {
+  const [startDate] = useState<string>(() => {
     const date = new Date();
     date.setMonth(date.getMonth() - 1);
     return date.toISOString().split("T")[0];
   });
-  const [endDate, setEndDate] = useState<string>(
-    new Date().toISOString().split("T")[0]
-  );
+  const [endDate] = useState<string>(new Date().toISOString().split("T")[0]);
 
   const handleFromChange = (newValue: SingleValue<CurrencyOption>) => {
     if (newValue) setFromCurrency(newValue.value);
@@ -109,7 +134,7 @@ export default function Home() {
 
     setLoading(true);
     try {
-      const response = await axios.get(
+      const response = await axios.get<TimeSeriesResponse>(
         `https://api.fxratesapi.com/convert?from=${fromCurrency}&to=${toCurrency}&amount=${numericAmount}`
       );
       setConversionResult(response.data.result.toFixed(2));
@@ -130,7 +155,7 @@ export default function Home() {
     }
 
     try {
-      const response = await axios.get(
+      const response = await axios.get<RatesResponse>(
         `https://api.fxratesapi.com/timeseries?start_date=${startDate}&end_date=${endDate}&base=${fromCurrency}&currencies=${toCurrency}`
       );
 
@@ -145,7 +170,7 @@ export default function Home() {
           month: "short",
           day: "numeric",
         }),
-        rate: rates[toCurrency],
+        rate: rates[toCurrency] ?? 0,
       }));
 
       setHistoricalData(formattedData);
