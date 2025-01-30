@@ -1,42 +1,58 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Base Styles */
+body {
+  background-color: #f8f9fa;
+  color: #212529;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Currency Converter Container */
+.converter-container {
+  background-color: white;
+  border: 1px solid #dee2e6;
+  border-radius: 0.75rem;
+}
+
+/* React Select Styles */
+.react-select__control {
+  border-color: #dee2e6 !important;
+  min-height: 46px;
+  border-radius: 8px !important;
+}
+
+.react-select__menu {
+  border: 1px solid #dee2e6 !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Currency Flag */
+.currency-flag {
+  width: 24px;
+  height: 16px;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Favorites Section */
+.favorites-section {
+  background-color: #fff3cd;
+  border: 1px solid #ffeeba;
+  border-radius: 0.75rem;
+}
+
+/* Chart Tooltip */
+.recharts-tooltip {
+  background-color: white !important;
+  border: 1px solid #dee2e6 !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .converter-container {
+    padding: 1rem;
   }
-}
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+  .react-select__menu {
+    width: 90% !important;
   }
 }
